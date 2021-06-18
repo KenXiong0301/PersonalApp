@@ -1,81 +1,93 @@
 <%- include('bootheader') -%>
 <%- include('menubar') -%>
 <div class="jumbotron">
-    <h1>This is the Demo page</h1>
-    <p> This is a paragraph </p>
+    <h1>Ken's Life Moments</h1>
+</div>
+<hr>
+
+<h2>Places that I have lived ...</h2>
+<div class="row">
+  <div class="col">
+    <ul>
+      <li>Wuhan, China</li>
+      <li>Long Island, NY, U.S.</li>
+      <li>Waltham, MA, U.S.</li>
+    </ul>
+  </div>
+  <div class="col">
+    <a href="http://www.wfls.com.cn/">Wuhan Foreign Languages School</a><br>
+    <image width="300" src="/images/IMG_1680.jpg">
+  </div>
+  <div class="col">
+    Montauk Point, Long Island<br>
+    <image width="300" src="/images/IMG_4215.JPG">
+  </div>
+  <div class="col">
+    Franconia Notch State Park, MA<br>
+    <image width="150" src="/images/Franconia Notch State Park.jpg">
+  </div>
 </div>
 
-
+<h2>Ken's Timeline</h2>
 <table class="table table-bordered table-striped">
   <thead>
     <tr>
-      <th>English</th> 
-      <th>Spanish</th> 
-      <th>Japanese</th>
+      <th>0-2</th>
+      <th>2-14</th>
+      <th>14-21</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>one</td>
-      <td>uno</td>
-      <td>ichi</td>
+      <td>
+      Born in Queens, New York;<br>
+      Taken by my parents to China when I was 2
+      </td>
+      <td>
+      Spent 12 delightful years in China;<br>
+      Made a lot of childhood friends
+      </td>
+      <td>
+      Came back to the states for high school<br>
+      and college education
+      </td>
     </tr>
-    <tr>
-      <td>two</td>
-      <td>dos</td>
-      <td>ni</td>
-    </tr>
-    <tr>
-      <td>three</td>
-      <td>tres</td>
-      <td>san</td>
-    </tr>   
-  </tbody> 
+  </tbody>
 </table>
-
-<hr>
-<h2>Follow the links!</h2>
-<ol>
-     <li><a href="images/dog.jpg">Dog</a></li>
-     <li><a href="images/cat.jpg">Cat</a></li>
-     <li><a href="http://www.brandeis.edu">Brandeis</a></li>
-</ol>
 <hr>
 
-<h1> Four Colors </h1>
-<ul>
-<li> red </li>
-<li> green </li>
-<li> blue </li>
-<li> black </li>
-</ul>
+<h2>Feedback</h2>
+<form method="post" action="/showformdata" class="bg-info">
 
-  <img src="images/dog.jpg" width="200">
+  Enter your name:
+  <input type="text"
+         name="fullname"
+         placeholder="your full name"><br>
+
+  When were you born?
+  <input type="date"
+         name="birthday"><br>
+
+  Do you find the content interesting?
+  <select name="interesting">
+    <option>yes</option>
+    <option>no</option>
+    <option>somewhat</option>
+  </select><hr>
+
+  Do you want to see more:<br>
+   Traveling content <input type="checkbox" name="interest" value="reading"><br>
+   Sports life <input type="checkbox" name="interest" value="code"><br>
+   Daily content <input type="checkbox" name="interest" value="voice"><br>
+   Other: <textarea name="content" rows="5" cols="40"></textarea>
   <hr>
-  <a href="http://www.brandeis.edu">Brandeis</a>
 
-  <h6>Count to 3 in Spanish</h6>
-  <ol>
-    <li>uno</li>
-    <li>dos</li>
-    <li>tres</li>
-  </ol>
+  Will you watch my videos if I have a Youtube channel?<br>
+  yes <input type="radio" name="youtube" value="yes"><br>
+  no  <input type="radio" name="youtube" value="no"><br>
+  maybe <input type="radio" name="youtube" value="maybe"><br>
 
-  <div>
-    This is a div element
-  </div>
-
-  <div class="row">
-    <div class="col">
-      First Column
-      <img src="images/dog.jpg" 
-       width="200">
-    </div>
-    <div class="col">
-      Second Column
-      <img src="images/cat.jpg" 
-       width="200">
-    </div>
-  </div>
+  <input type="submit" value="Register now">
+</form>
 
 <%- include('bootfooter') -%>

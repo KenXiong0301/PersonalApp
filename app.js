@@ -52,7 +52,7 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
-app.get("/demo", 
+app.get("/demo",
         function (req, res){res.render("demo");});
 
 app.get("/about", (request, response) => {
@@ -63,8 +63,26 @@ app.get("/form", (request,response) => {
   response.render("form")
 })
 
+app.get("/dataDemo", (request,response) => {
+  response.locals.name="Tim Hickey"
+  response.locals.vals =[1,2,3,4,5]
+  response.locals.people =[
+    {'name':'Tim','age':65},
+    {'name':'Yas','age':29}]
+  response.render("dataDemo")
+})
+
 app.post("/showformdata", (request,response) => {
   response.json(request.body)
+})
+
+app.get("/shareMoments", (req,res) => {
+  res.render("shareMoments")
+})
+
+app.post("/showMoments", (req,res) => {
+  
+}
 })
 
 // Here is where we will explore using forms!
@@ -75,7 +93,7 @@ app.post("/showformdata", (request,response) => {
 // and send it back to the browser in raw JSON form, see
 // https://covidtracking.com/data/api
 // for all of the kinds of data you can get
-app.get("/c19", 
+app.get("/c19",
   async (req,res,next) => {
     try {
       const url = "https://covidtracking.com/api/v1/us/current.json"
