@@ -1,0 +1,19 @@
+<%- include('bootheader') -%>
+<%- include('menubar') -%>
+<div class="jumbotron">
+    <h1>Weather Search Engine</h1>
+    This is a weather app that reports
+    the current weather condition in your area.
+</div>
+<hr>
+
+<form method="post" action="/getWeather">
+  Enter the state that you live in:
+  <input type="text" name="state" placeholder="Fullname">
+  <input type="submit" value="Check Weather">
+</form>
+
+<hr>
+
+
+<%- include('bootfooter') -%>

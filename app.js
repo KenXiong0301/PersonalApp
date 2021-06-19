@@ -76,13 +76,38 @@ app.post("/showformdata", (request,response) => {
   response.json(request.body)
 })
 
+
 app.get("/shareMoments", (req,res) => {
   res.render("shareMoments")
 })
 
 app.post("/showMoments", (req,res) => {
-  
-}
+  res.locals.urlPic = req.body.urlPic
+  res.locals.post = req.body.post
+  res.render("showMoments")
+})
+
+app.get('/weather', (req,res) => {
+  res.render('weather')
+})
+
+app.post("/getWeather",
+  async (req,res,next) => {
+    try {
+      const state = req.body.state
+      const url = "http://api.openweathermap.org/data/2.5/weather?q="+state+"&units=imperial&APPID=d3fd7fe792d8f4a038633a7170d66256"
+      const result = await axios.get(url)
+      console.dir(result.data)
+      const picurl = "http://openweathermap.org/img/w/"+result.data.weather[0].icon+".png"
+      console.log(picurl)
+      res.locals.state = state
+      res.locals.pic = picurl
+      res.locals.description = result.data.weather[0].description
+      res.locals.temp = result.data.main.temp
+      res.render('getWeather')
+    } catch(error){
+      next(error)
+    }
 })
 
 // Here is where we will explore using forms!

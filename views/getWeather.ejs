@@ -1,0 +1,12 @@
+<%- include('bootheader') -%>
+<%- include('menubar') -%>
+    <div class="jumbotron">
+        <h1>Today's weather in <%= state %></h1>
+    </div>
+    <hr>
+    <image width="300" src=<%= pic %>><br>
+    <h2><%= description %></h2><br>
+    <h2><%= temp %>	&#8457</h2><br>
+    <a href="weather"> Go back to the weather search engine </a>
+
+<%- include('bootfooter') -%>
