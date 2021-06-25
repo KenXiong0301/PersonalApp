@@ -1,17 +1,23 @@
 <%- include('bootheader') -%>
 <%- include('menubar') -%>
     <div class="jumbotron">
-        <h1>Onepic</h1>
-        <h2>Life Moments</h2>
+        <h1>See your post here</h1>
     </div>
     <hr>
 
-    Here is your post:<br>
-    <img width="50%" src="<%= urlPic %>"><br>
-    <p><%= post %></p>
-    <hr>
 
-
+      <% posts.forEach(post => { %>
+        <div class="row">
+          <div class="col">
+            <image width ="100%" src=<% post.imageURL %>>
+          </div>
+          <div class="col">
+            <% post.text %>
+          </div>
+        </div>
+        <% post.createdAt %>
+        <hr>
+      <% }) %>
 
 
 <%- include('bootfooter') -%>

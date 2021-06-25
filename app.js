@@ -36,6 +36,50 @@ app.use(
   })
 );
 
+//connecting database
+const mongoose = require( 'mongoose' );
+//mongoose.connect( `mongodb+srv://${auth.atlasAuth.username}:${auth.atlasAuth.password}@cluster0-yjamu.mongodb.net/authdemo?retryWrites=true&w=majority`);
+mongoose.connect( 'mongodb://localhost/authDemo');
+//const mongoDB_URI = process.env.MONGODB_URI
+//mongoose.connect(mongoDB_URI)
+
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  console.log("we are connected!!!")
+});
+
+const User = require('./models/User');
+const Post = require('./models/Post');
+const usersRouter = require('./routes/users');
+const postRouter = require('./routes/post')
+
+
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+
+app.use(cors());
+app.use(layouts);
+
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.use('/users', usersRouter);
+app.use('/post', postRouter)
+
+const myLogger = (req,res,next) => {
+  console.log('inside a route!')
+  next()
+}
+
+//connecting database
+
+
+
 //app.use(bodyParser.urlencoded({ extended: false }));
 
 // This is an example of middleware
@@ -74,17 +118,6 @@ app.get("/dataDemo", (request,response) => {
 
 app.post("/showformdata", (request,response) => {
   response.json(request.body)
-})
-
-
-app.get("/shareMoments", (req,res) => {
-  res.render("shareMoments")
-})
-
-app.post("/showMoments", (req,res) => {
-  res.locals.urlPic = req.body.urlPic
-  res.locals.post = req.body.post
-  res.render("showMoments")
 })
 
 app.get('/weather', (req,res) => {
